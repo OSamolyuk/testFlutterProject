@@ -1,5 +1,9 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'login_bloc.dart';
+import 'login_screen.dart';
 
 const _title = 'MyApp';
 const _listPadding = 16.0;
@@ -40,13 +44,20 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: widget.title,
-      home: const Scaffold(
-        body: Center(
-          child: RandomWordsList(),
-        ),
+      home:  Scaffold(
+        body: _prepareLoginScreen()
       ),
     );
   }
+}
+
+Widget _prepareLoginScreen() {
+  return BlocProvider(
+    create: (BuildContext context) {
+      return LoginBloc();
+    },
+    child: const LoginScreen(),
+  );
 }
 
 class RandomWords extends StatefulWidget {
