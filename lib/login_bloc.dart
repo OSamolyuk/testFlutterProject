@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localization/localization.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginInitial()) {
@@ -14,7 +15,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Future<void> _loginButtonTapped(LoginButtonTappedEvent e, Emitter emit) async {
-    emit(UpdateTextState(text: "You've tapped the button"));
+    emit(UpdateTextState(text: 'buttonTap'.i18n()));
   }
 
   Future<void> _showSnackBarTapped(ShowSnackBarButtonTappedEvent e, Emitter emit) async {

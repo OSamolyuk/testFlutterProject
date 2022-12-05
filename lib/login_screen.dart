@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localization/localization.dart';
+import 'package:test_flutter/app_theme.dart';
 
 import 'login_bloc.dart';
 
@@ -11,7 +13,8 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
+      backgroundColor: Colors.deepOrange,
+      appBar: AppBar(title: Text('login'.i18n())),
       body: _buildScaffoldBody(),
     );
   }
@@ -22,13 +25,12 @@ class LoginScreen extends StatelessWidget {
         return _buildParentWidget(context, state);
       },
       listener: (context, state) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Just a snackbar'),
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('snackbarText'.i18n()),
         ));
       },
       buildWhen: (previous, current) => _shouldBuildFor(current),
       listenWhen: (previous, current) => _shouldListenFor(current),
-
     );
   }
 
@@ -48,6 +50,16 @@ class LoginScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildTextWidget(state),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('leftText'.i18n(), style: appTheme.textStyles.defaultTextStyle()),
+              const SizedBox(
+                width: _boxHeight,
+              ),
+              Text('rightText'.i18n(), style: appTheme.textStyles.defaultTextStyle())
+            ],
+          ),
           const SizedBox(
             height: _boxHeight,
           ),
@@ -55,18 +67,16 @@ class LoginScreen extends StatelessWidget {
             onPressed: () {
               context.read<LoginBloc>().add(LoginButtonTappedEvent());
             },
-            child: const Text("Tap me"),
+            child: Text('tapMe'.i18n()),
           ),
           const SizedBox(
             height: _boxHeight,
           ),
           TextButton(
               onPressed: () {
-                context
-                    .read<LoginBloc>()
-                    .add(ShowSnackBarButtonTappedEvent());
+                context.read<LoginBloc>().add(ShowSnackBarButtonTappedEvent());
               },
-              child: const Text("Show Snackbar"))
+              child: Text('snackbarButtonText'.i18n()))
         ],
       ),
     );
@@ -76,9 +86,8 @@ class LoginScreen extends StatelessWidget {
     debugPrint(state.toString());
     if (state is UpdateTextState) {
       return Text(state.text);
-    }
-    else {
-      return const Text("This will change on button tap");
+    } else {
+      return Text('changeButtonText'.i18n());
     }
   }
 }

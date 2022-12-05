@@ -1,0 +1,10 @@
+{
+  "leftText": "leftText",
+  "rightText": "rightText",
+  "tapMe": "Tap me",
+  "snackbarButtonText": "Show Snackbar",
+  "snackbarText": "Just a Snackbar",
+  "login": "Login",
+  "changeButtonText": "This will change on button tap",
+  "buttonTap": "You've tapped the button"
+}
