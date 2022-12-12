@@ -6,6 +6,10 @@ import 'package:test_flutter/app_theme.dart';
 import 'login_bloc.dart';
 
 const _boxHeight = 16.0;
+const _imageWidth = 100.0;
+const _imageHeight = 100.0;
+const _imagePath = 'assets/images/image.png';
+const _imageUrl = 'https://static.javatpoint.com/computer/images/what-is-the-url.png';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -50,32 +54,49 @@ class LoginScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildTextWidget(state),
+            Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+              Image.network(
+                _imageUrl,
+                height: _imageHeight,
+                width: _imageWidth,
+              ),
+              Image.asset(
+                _imagePath,
+                height: _imageHeight,
+                width: _imageWidth,
+              )
+            ]),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('leftText'.i18n(), style: appTheme.textStyles.defaultTextStyle()),
+              Text('leftText'.i18n(),
+                  style: appTheme.textStyles.defaultTextStyle()),
               const SizedBox(
                 width: _boxHeight,
               ),
-              Text('rightText'.i18n(), style: appTheme.textStyles.defaultTextStyle())
+              Text('rightText'.i18n(),
+                  style: appTheme.textStyles.defaultTextStyle())
             ],
           ),
           const SizedBox(
             height: _boxHeight,
           ),
-          TextButton(
+          ElevatedButton(
             onPressed: () {
               context.read<LoginBloc>().add(LoginButtonTappedEvent());
             },
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.lightBlue, textStyle: const TextStyle(fontStyle: FontStyle.italic)),
             child: Text('tapMe'.i18n()),
           ),
           const SizedBox(
             height: _boxHeight,
           ),
-          TextButton(
+          ElevatedButton(
               onPressed: () {
                 context.read<LoginBloc>().add(ShowSnackBarButtonTappedEvent());
               },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black26, textStyle: const TextStyle(fontStyle: FontStyle.normal)),
               child: Text('snackbarButtonText'.i18n()))
         ],
       ),
