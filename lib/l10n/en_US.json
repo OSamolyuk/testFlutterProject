@@ -6,5 +6,6 @@
   "snackbarText": "Just a Snackbar",
   "login": "Login",
   "changeButtonText": "This will change on button tap",
-  "buttonTap": "You've tapped the button"
+  "buttonTap": "You've tapped the button",
+  "showPDF": "Show PDF"
 }

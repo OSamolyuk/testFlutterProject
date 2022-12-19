@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:localization/localization.dart';
 import 'package:test_flutter/app_theme.dart';
+import 'package:test_flutter/pdf_screen.dart';
 
 import 'login_bloc.dart';
 
@@ -10,6 +11,7 @@ const _imageWidth = 100.0;
 const _imageHeight = 100.0;
 const _imagePath = 'assets/images/image.png';
 const _imageUrl = 'https://static.javatpoint.com/computer/images/what-is-the-url.png';
+const _pdfUrl = 'https://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -97,7 +99,13 @@ class LoginScreen extends StatelessWidget {
                 context.read<LoginBloc>().add(ShowSnackBarButtonTappedEvent());
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black26, textStyle: const TextStyle(fontStyle: FontStyle.normal)),
-              child: Text('snackbarButtonText'.i18n()))
+              child: Text('snackbarButtonText'.i18n())),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => PdfScreen(pdfUrl: _pdfUrl)));
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black26, textStyle: const TextStyle(fontStyle: FontStyle.normal)),
+              child: Text('showPDF'.i18n())),
         ],
       ),
     );
