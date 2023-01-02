@@ -5,6 +5,7 @@ import 'package:test_flutter/app_theme.dart';
 import 'package:test_flutter/pdf_screen.dart';
 
 import 'login_bloc.dart';
+import 'map_screen.dart';
 
 const _boxHeight = 16.0;
 const _imageWidth = 100.0;
@@ -106,6 +107,12 @@ class LoginScreen extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black26, textStyle: const TextStyle(fontStyle: FontStyle.normal)),
               child: Text('showPDF'.i18n())),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MapScreen()));
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black26, textStyle: const TextStyle(fontStyle: FontStyle.normal)),
+              child: Text('showMap'.i18n())),
         ],
       ),
     );

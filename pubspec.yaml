@@ -17,6 +17,7 @@ dependencies:
   localization: ^2.1.0
   google_fonts: ^3.0.1
   syncfusion_flutter_pdfviewer: ^20.3.59
+  google_maps_flutter: ^2.2.2
 
 
 dev_dependencies:
