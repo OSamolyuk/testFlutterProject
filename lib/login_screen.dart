@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:localization/localization.dart';
 import 'package:test_flutter/app_theme.dart';
 import 'package:test_flutter/pdf_screen.dart';
+import 'package:test_flutter/test_app_bar.dart';
 
 import 'login_bloc.dart';
 import 'map_screen.dart';
@@ -21,7 +22,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.deepOrange,
-      appBar: AppBar(title: Text('login'.i18n())),
+      appBar: TestAppBar(appBarTitle: 'login'.i18n()),
       body: _buildScaffoldBody(),
     );
   }

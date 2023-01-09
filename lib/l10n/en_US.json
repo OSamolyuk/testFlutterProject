@@ -8,5 +8,6 @@
   "changeButtonText": "This will change on button tap",
   "buttonTap": "You've tapped the button",
   "showPDF": "Show PDF",
-  "showMap": "Show Map"
+  "showMap": "Show Map",
+  "mapTitle": "Map"
 }
