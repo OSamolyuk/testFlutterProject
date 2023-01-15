@@ -9,5 +9,7 @@
   "buttonTap": "You've tapped the button",
   "showPDF": "Show PDF",
   "showMap": "Show Map",
-  "mapTitle": "Map"
+  "mapTitle": "Map",
+  "saveText": "saveText",
+  "loadText": "loadText"
 }

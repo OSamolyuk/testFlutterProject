@@ -18,6 +18,7 @@ dependencies:
   google_fonts: ^3.0.1
   syncfusion_flutter_pdfviewer: ^20.3.59
   google_maps_flutter: ^2.2.2
+  shared_preferences: ^2.0.16
 
 
 dev_dependencies:

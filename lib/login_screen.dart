@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:localization/localization.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_flutter/app_theme.dart';
 import 'package:test_flutter/pdf_screen.dart';
 import 'package:test_flutter/test_app_bar.dart';
@@ -11,9 +12,11 @@ import 'map_screen.dart';
 const _boxHeight = 16.0;
 const _imageWidth = 100.0;
 const _imageHeight = 100.0;
+const _editTextWidth = 300.0;
 const _imagePath = 'assets/images/image.png';
 const _imageUrl = 'https://static.javatpoint.com/computer/images/what-is-the-url.png';
 const _pdfUrl = 'https://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf';
+const _spKey = 'keyString';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -51,7 +54,9 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget _buildParentWidget(BuildContext context, LoginState state) {
-    return SizedBox(
+    final controller = TextEditingController();
+
+    return SingleChildScrollView(child: SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -96,6 +101,24 @@ class LoginScreen extends StatelessWidget {
           const SizedBox(
             height: _boxHeight,
           ),
+          SizedBox(
+            width: _editTextWidth,
+            child: TextFormField(controller: controller,),
+          ),
+          ElevatedButton(
+              onPressed: () async {
+                final prefs = await SharedPreferences.getInstance();
+                await prefs.setString(_spKey, controller.text.toString());
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black26, textStyle: const TextStyle(fontStyle: FontStyle.normal)),
+              child: Text('saveText'.i18n())),
+          ElevatedButton(
+              onPressed: () async {
+                final prefs = await SharedPreferences.getInstance();
+                controller.text = prefs.getString(_spKey) ?? "";
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black26, textStyle: const TextStyle(fontStyle: FontStyle.normal)),
+              child: Text('loadText'.i18n())),
           ElevatedButton(
               onPressed: () {
                 context.read<LoginBloc>().add(ShowSnackBarButtonTappedEvent());
@@ -116,7 +139,7 @@ class LoginScreen extends StatelessWidget {
               child: Text('showMap'.i18n())),
         ],
       ),
-    );
+    ),);
   }
 
   Widget _buildTextWidget(LoginState state) {
