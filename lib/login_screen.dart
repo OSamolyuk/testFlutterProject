@@ -13,18 +13,26 @@ const _boxHeight = 16.0;
 const _imageWidth = 100.0;
 const _imageHeight = 100.0;
 const _editTextWidth = 300.0;
+const _bigButtonHeight = 1000.0;
 const _imagePath = 'assets/images/image.png';
 const _imageUrl = 'https://static.javatpoint.com/computer/images/what-is-the-url.png';
 const _pdfUrl = 'https://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf';
 const _spKey = 'keyString';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool isOrange = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepOrange,
+      backgroundColor: isOrange ? Colors.deepOrange : Colors.deepPurple,
       appBar: TestAppBar(appBarTitle: 'login'.i18n()),
       body: _buildScaffoldBody(),
     );
@@ -63,19 +71,19 @@ class LoginScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildTextWidget(state),
-            Row(mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-              Image.network(
-                _imageUrl,
-                height: _imageHeight,
-                width: _imageWidth,
-              ),
-              Image.asset(
-                _imagePath,
-                height: _imageHeight,
-                width: _imageWidth,
-              )
-            ]),
+          Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.network(
+                  _imageUrl,
+                  height: _imageHeight,
+                  width: _imageWidth,
+                ),
+                Image.asset(
+                  _imagePath,
+                  height: _imageHeight,
+                  width: _imageWidth,
+                )
+              ]),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -137,6 +145,15 @@ class LoginScreen extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black26, textStyle: const TextStyle(fontStyle: FontStyle.normal)),
               child: Text('showMap'.i18n())),
+          SizedBox(height: _bigButtonHeight,
+            child: TextButton(
+                onPressed: () {
+                  setState(() {
+                      isOrange = !isOrange;
+                  }
+                );},
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black26, textStyle: const TextStyle(fontStyle: FontStyle.normal)),
+                child: Text('bigButton'.i18n())),)
         ],
       ),
     ),);
