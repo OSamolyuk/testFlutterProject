@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:localization/localization.dart';
@@ -9,7 +10,9 @@ import 'package:test_flutter/test_app_bar.dart';
 import 'login_bloc.dart';
 import 'map_screen.dart';
 
+const _itemPadding = 5.0;
 const _boxHeight = 16.0;
+const _borderRadius = 8.0;
 const _imageWidth = 100.0;
 const _imageHeight = 100.0;
 const _editTextWidth = 300.0;
@@ -113,6 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
             width: _editTextWidth,
             child: TextFormField(controller: controller,),
           ),
+          Padding(padding: const EdgeInsets.all(_itemPadding),child: TextFormField(decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(_borderRadius), borderSide: const BorderSide(color: Colors.black)),),),),
           ElevatedButton(
               onPressed: () async {
                 final prefs = await SharedPreferences.getInstance();
@@ -133,6 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black26, textStyle: const TextStyle(fontStyle: FontStyle.normal)),
               child: Text('snackbarButtonText'.i18n())),
+          const SizedBox(height: _imageHeight, width: _imageHeight, child: Placeholder(color: CupertinoColors.darkBackgroundGray,)),
           ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => PdfScreen(pdfUrl: _pdfUrl)));
