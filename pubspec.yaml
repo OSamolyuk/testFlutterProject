@@ -13,6 +13,13 @@ dependencies:
   cupertino_icons: ^1.0.2
   english_words: ^4.0.0
   flutter_bloc: ^8.0.0
+  get_it: ^7.2.0
+  localization: ^2.1.0
+  google_fonts: ^3.0.1
+  syncfusion_flutter_pdfviewer: ^20.3.59
+  google_maps_flutter: ^2.2.2
+  shared_preferences: ^2.0.16
+
 
 dev_dependencies:
   flutter_test:
@@ -22,3 +29,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - lib/l10n/
+    - assets/images/
