@@ -6,7 +6,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.17.0 <=3.0.0'
+  sdk: '>=2.17.0 <3.0.0'
 dependencies:
   flutter:
     sdk: flutter
@@ -16,10 +16,9 @@ dependencies:
   get_it: ^7.2.0
   localization: ^2.1.0
   google_fonts: ^3.0.1
-  syncfusion_flutter_pdfviewer: ^20.3.59
   google_maps_flutter: ^2.2.2
   shared_preferences: ^2.0.16
-
+  flutter_cached_pdfview: ^0.4.1
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 
 class PdfScreen extends StatefulWidget {
   String pdfUrl;
@@ -9,13 +9,12 @@ class PdfScreen extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _PdfScreenState();
   }
-
 }
 
 class _PdfScreenState extends State<PdfScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SfPdfViewer.network(widget.pdfUrl));
+    return Scaffold(body: const PDF().cachedFromUrl(widget.pdfUrl));
   }
 
 }
